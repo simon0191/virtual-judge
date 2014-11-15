@@ -1,0 +1,28 @@
+<h1>Problems#create</h1>
+<p>Find me in app/views/problems/create.html.erb</p>
+
+<%= form_for @problem, :html => {:multipart => true} do |f| %>
+  <p>
+    <label>Nombre</label>
+    <%= f.text_field :name %>
+
+    <label>Nombre</label>
+    <%= f.text_field :name %>
+
+    <label>Descripción</label>
+    <%= f.text_area_tag(:description, "Descripción del problema", size: "24x6") %>
+
+    <label>Máxima fecha de envío</label>
+    <%= date_field(:max_date) %>
+
+    <label>Solución</label>
+    <%= f.file_field :solution %>
+    <%= f.hidden_field :solution_cache %>
+
+    <label>Solución</label>
+    <%= f.file_field :input %>
+    <%= f.hidden_field :input_cache %>
+
+    <%= submit_tag("Subir") %>
+  </p>
+<% end %>

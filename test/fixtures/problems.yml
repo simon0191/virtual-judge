@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  max_date: 2014-11-15
+  language: MyString
+  solution: MyString
+  input: MyString
+
+two:
+  name: MyString
+  description: MyText
+  max_date: 2014-11-15
+  language: MyString
+  solution: MyString
+  input: MyString
