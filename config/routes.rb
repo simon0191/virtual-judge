@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'problems/create'
 
   devise_for :users
 
   get 'pages/index'
-  resources :problems, only: [:create, :index]
+
+  resources :submissions
+  resources :problems, only: [:create, :index, :new, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
