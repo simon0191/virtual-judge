@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116075807) do
+ActiveRecord::Schema.define(version: 20141116191631) do
 
   create_table "problems", force: true do |t|
     t.string   "name"
@@ -22,13 +22,21 @@ ActiveRecord::Schema.define(version: 20141116075807) do
     t.string   "input"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "output",      limit: 65536
+    t.text     "output",            limit: 65536
+    t.integer  "problem_setter_id"
   end
+
+  add_index "problems", ["problem_setter_id"], name: "index_problems_on_problem_setter_id"
 
   create_table "submissions", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "problem_id"
+    t.integer  "user_id"
   end
+
+  add_index "submissions", ["problem_id"], name: "index_submissions_on_problem_id"
+  add_index "submissions", ["user_id"], name: "index_submissions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

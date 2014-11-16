@@ -2,18 +2,26 @@
 #
 # Table name: problems
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  description :text
-#  max_date    :date
-#  language    :string(255)
-#  solution    :string(255)
-#  input       :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  description       :text
+#  max_date          :date
+#  language          :string(255)
+#  solution          :string(255)
+#  input             :string(255)
+#  created_at        :datetime
+#  updated_at        :datetime
+#  output            :text(65536)
+#  problem_setter_id :integer
 #
 
 class Problem < ActiveRecord::Base
+
+  belongs_to :problem_setter, :class_name => 'User', :foreign_key => 'problem_setter_id'
+  has_many :submissions
+  has_many :submitters, through: :submissions, source: :user
+
+
   mount_uploader :solution, ProblemSolutionUploader
   mount_uploader :input, ProblemInputUploader
 
