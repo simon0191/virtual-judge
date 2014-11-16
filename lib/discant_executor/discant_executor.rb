@@ -5,11 +5,11 @@ class DiscantExecutor
     attr_accessor :discantJarPath
   end
 
-  def self.exec(filePath)
+  def self.exec(programPath, inputPath)
     #TODO: add timeout
     #check this gist: https://gist.github.com/lpar/1032297
     #http://blog.bigbinary.com/2012/10/18/backtick-system-exec-in-ruby.html
-    cmd = "java -jar #{discantJarPath} #{filePath}"
+    cmd = "java -jar #{discantJarPath} #{programPath} < #{inputPath}"
     out, err, exit_status = nil, nil, nil
 
     Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
