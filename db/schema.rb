@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141115083107) do
+ActiveRecord::Schema.define(version: 20141116075807) do
 
   create_table "problems", force: true do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20141115083107) do
     t.string   "input"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "output",      limit: 65536
   end
 
   create_table "submissions", force: true do |t|
