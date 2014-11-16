@@ -39,3 +39,8 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 gem 'devise'
 gem 'carrierwave'
+
+group :production do
+    gem 'mysql2'
+    gem 'unicorn'
+end
