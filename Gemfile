@@ -39,6 +39,7 @@ gem 'carrierwave'
 
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
+gem 'annotate', '~> 2.6.5'
 
 group :production do
     gem 'mysql2'
