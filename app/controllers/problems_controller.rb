@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
   before_action :set_problem, only: [:show, :edit, :update, :destroy]
+  before_action :verify_user_is_admin, only: [:edit, :update, :destroy, :create, :new]
 
   # GET /problems
   # GET /problems.json
