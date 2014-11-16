@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     unless signed_in? && current_user.role == 'admin'
       begin
         flash.alert = "Permisos insuficientes"
-        #TODO: Redirect to last pagenot working :(
+        #TODO: Redirect to last page not working :(
         redirect_to :back
       rescue ActionController::RedirectBackError
         redirect_to root_path
