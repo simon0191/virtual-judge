@@ -16,7 +16,9 @@
   <label>Solución</label>
   <%= f.file_field :solution %>
   <%= f.hidden_field :solution_cache %>
-  <label>Error: <%= @problem.errors[:solution] %></label>
+  <% unless @problem.errors[:solution].blank? %>
+    <label>Error: <%= @problem.errors[:solution] %></label>
+  <% end %>
   <br>
   <label>Lenguage</label>
   <%= f.text_field :language %>

@@ -30,6 +30,7 @@ class Problem < ActiveRecord::Base
   validates :language, inclusion: { in: ["dis"]}
 
   validate :solution_is_valid
+  validate :problem_setter_is_admin
 
   private
   def solution_is_valid
@@ -38,6 +39,12 @@ class Problem < ActiveRecord::Base
       self.output = result[:stdout]
     else
       errors.add(:solution, "The execution of the solution wasn't successful")
+    end
+  end
+
+  def problem_setter_is_admin
+    unless self.problem_setter.role == "admin"
+      errors.add(:problem_setter, "The problem setter should be admin")
     end
   end
 
