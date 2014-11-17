@@ -4,8 +4,11 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  resources :submissions
-  resources :problems, only: [:create, :index, :new, :show]
+  resources :submissions, only: [:show, :index]
+
+  resources :problems, only: [:create, :index, :new, :show] do
+    resources :submissions, only: [:new, :create]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

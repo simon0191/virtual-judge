@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141116191631) do
+ActiveRecord::Schema.define(version: 20141116201913) do
 
   create_table "problems", force: true do |t|
     t.string   "name"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20141116191631) do
     t.datetime "updated_at"
     t.integer  "problem_id"
     t.integer  "user_id"
+    t.string   "source_code"
+    t.string   "language"
+    t.string   "result"
   end
 
   add_index "submissions", ["problem_id"], name: "index_submissions_on_problem_id"

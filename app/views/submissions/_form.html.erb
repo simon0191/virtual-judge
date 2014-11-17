@@ -1,4 +1,4 @@
-<%= form_for(@submission) do |f| %>
+<%= form_for @submission, url: problem_submissions_path(@problem), html: {multipart: true} do |f| %>
   <% if @submission.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
@@ -11,7 +11,17 @@
     </div>
   <% end %>
 
+  <label>Solución</label>
+  <%= f.file_field :source_code %>
+  <%= f.hidden_field :source_code_cache %>
+  <% unless @submission.errors[:source_code].blank? %>
+    <label>Error: <%= @submission.errors[:source_code] %></label>
+  <% end %>
+  <br>
+  <label>Lenguage</label>
+  <%= f.text_field :language %>
+  <br>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit("Enviar") %>
   </div>
 <% end %>
