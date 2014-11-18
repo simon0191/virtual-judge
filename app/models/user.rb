@@ -19,6 +19,7 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
+#  points                 :integer
 #
 
 class User < ActiveRecord::Base
@@ -34,4 +35,12 @@ class User < ActiveRecord::Base
   has_many :set_problems, :foreign_key => 'problem_setter_id', :class_name => 'Problem'
 
   validates :name, :username, :school, presence: true
+
+  after_initialize :default_values
+
+  private
+  def default_values
+    self.points ||= 0
+    self.role ||= "coder"
+  end
 end

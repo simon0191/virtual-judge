@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
+  resources :users, only: [:show, :index]
+
   resources :submissions, only: [:show, :index]
 
   resources :problems, only: [:create, :index, :new, :show] do

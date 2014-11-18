@@ -21,6 +21,7 @@ module VirtualJudge
     # config.i18n.default_locale = :de
     config.autoload_paths << "#{Rails.root}/app/uploaders"
     config.autoload_paths << "#{Rails.root}/lib/discant_executor"
-    config.i18n.default_locale = :es
+    # TODO: translate everything ...
+    # config.i18n.default_locale = :es
   end
 end

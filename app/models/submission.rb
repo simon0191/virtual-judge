@@ -24,10 +24,17 @@ class Submission < ActiveRecord::Base
     exec_result = DiscantExecutor.exec(self.source_code.file.file, self.problem.input.file.file)
     if exec_result[:exit_status].success? && exec_result[:stdout] == self.problem.output
       self.result = "ACCEPTED"
+      if self.created_at <= self.problem.max_date
+        self.user.points += 10
+      else
+        self.user.points += 5
+      end
     else
       self.result = "WRONG_ANSWER"
     end
     self.save
+    self.user.save
+
   end
 
 end
