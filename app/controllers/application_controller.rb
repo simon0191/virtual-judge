@@ -5,12 +5,16 @@ class ApplicationController < ActionController::Base
 
   def verify_user_is_admin
     unless signed_in? && current_user.role == 'admin'
-      begin
-        flash.alert = "Permisos insuficientes"
-        #TODO: Redirect to last page not working :(
-        redirect_to :back
-      rescue ActionController::RedirectBackError
-        redirect_to root_path
+      if signed_in?
+        begin
+          flash.alert = "Permisos insuficientes"
+          #TODO: Redirect to last page not working :(
+          redirect_to :back
+        rescue ActionController::RedirectBackError
+          redirect_to root_path
+        end
+      else
+        redirect_to :new_user_session
       end
     end
   end
