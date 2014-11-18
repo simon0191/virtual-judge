@@ -16,13 +16,13 @@
         <% end %>
 
         <div class="form-group">
-          <label for="submission[source_code]">Solución</label>
+          <%= f.label :source_code, "Solución"%>
           <%= f.file_field :source_code, class:"form-control" %>
           <%= f.hidden_field :source_code_cache %>
         </div>
 
         <div class="form-group">
-          <label for="submission[language]">Lenguage</label>
+          <%= f.label :language, "Lenguaje"%>
           <%= f.select(
                 :language,
                 options_for_select([['Discant','dis'],['Python','py']]),

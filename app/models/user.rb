@@ -33,4 +33,5 @@ class User < ActiveRecord::Base
   #Admins
   has_many :set_problems, :foreign_key => 'problem_setter_id', :class_name => 'Problem'
 
+  validates :name, :username, :school, presence: true
 end
