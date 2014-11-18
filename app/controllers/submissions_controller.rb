@@ -30,7 +30,7 @@ class SubmissionsController < ApplicationController
     respond_to do |format|
       if @submission.save
         @submission.execute_code
-        format.html { redirect_to @submission, notice: 'Submission was successfully created.' }
+        format.html { redirect_to({action: 'index'}, {notice: 'Tu envío fue procesado'})}
         format.json { render :show, status: :created, location: @submission }
       else
         format.html { render :new }
