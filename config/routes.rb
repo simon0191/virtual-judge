@@ -64,5 +64,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root to: "pages#index"
+  root to: "problems#index"
 end
