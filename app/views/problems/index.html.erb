@@ -1,1 +1,67 @@
-<h1>Problems list</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <h1>Problemas</h1>
+
+      <!--
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Problema</th>
+              <th>Fecha máxima</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @problems.each do |p| %>
+            <tr>
+              <td>
+                <h4 class="list-group-item-heading"><%= p.name %></h4>
+                <p class="list-group-item-text"><%= p.description %></p>
+              </td>
+              <td>
+                <%= p.max_date %>
+              </td>
+              <td>
+                <button class="btn btn-success">Enviar solución</button>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      -->
+
+      <ul class="list-group">
+        <li class="list-group-item problems-header">
+          <div class="row">
+            <div class="col-xs-6">
+              <h3 class="list-group-item-heading">Problema</h4>
+            </div>
+            <div class="col-xs-4">
+              <h3 class="list-group-item-heading">Fecha máxima</h4>
+            </div>
+          </div>
+        </li>
+        <% @problems.each do |p| %>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4 class="list-group-item-heading"><%= p.name %></h4>
+              <p class="list-group-item-text" data-trunkeight="true" ><%= p.description %></p>
+            </div>
+            <div class="col-xs-3">
+              <%= p.max_date %>
+            </div>
+            <div class="col-xs-3">
+              <%= link_to "Enviar Solución", new_problem_submission_path(p), class: "btn btn-success" %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+
+    </div>
+  </div>
+</div>
