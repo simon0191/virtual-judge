@@ -24,7 +24,7 @@
             <tr>
               <td><%= submission.id %></td>
               <td><%= link_to submission.problem.name, submission.problem %></td>
-              <td><%= link_to submission.user.username || "Simon", :root %></td>
+              <td><%= link_to submission.user.username , submission.user %></td>
               <td class="<%= submission.result == 'ACCEPTED'?'success':'danger'%>"><%= submission.result %></td>
               <td><%= submission.created_at %></td>
             </tr>
