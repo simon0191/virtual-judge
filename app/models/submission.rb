@@ -21,7 +21,10 @@ class Submission < ActiveRecord::Base
   validates :source_code, :language, :user_id, :problem_id, presence: true
 
   def execute_code
-    exec_result = DiscantExecutor.exec(self.source_code.file.file, self.problem.input.file.file)
+    input_path = self.problem.input && self.problem.input.file ? self.problem.input.file.file : nil
+    source_code_path = self.source_code.file.file
+
+    exec_result = DiscantExecutor.exec(source_code_path, input_path)
     if exec_result[:exit_status].success? && exec_result[:stdout] == self.problem.output
       self.result = "ACCEPTED"
       if self.created_at <= self.problem.max_date

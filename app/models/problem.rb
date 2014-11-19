@@ -25,7 +25,7 @@ class Problem < ActiveRecord::Base
   mount_uploader :solution, ProblemSolutionUploader
   mount_uploader :input, ProblemInputUploader
 
-  validates :name, :description, :max_date, :language,:solution, :input, presence: true
+  validates :name, :description, :max_date, :language,:solution, presence: true
 
   validates :language, inclusion: { in: ["dis"]}
 
@@ -34,7 +34,10 @@ class Problem < ActiveRecord::Base
 
   private
   def solution_is_valid
-    result = DiscantExecutor.exec(self.solution.file.file, self.input.file.file)
+    input_path = self.input && self.input.file ? self.input.file.file : nil
+    solution_path = self.solution.file.file
+
+    result = DiscantExecutor.exec(solution_path, input_path)
     if result[:exit_status].success?
       self.output = result[:stdout]
     else
