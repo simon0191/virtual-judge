@@ -1,2 +1,69 @@
 
-<%= @user.to_json %>
+<div class="container">
+  <div class="page-header">
+    <h1><%= @user.username %></h1>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h3>Datos personales</h3>
+      <div class="">
+        <strong>Usuario:</strong> <%= @user.username %>
+      </div>
+      <div class="">
+        <strong>Nombre:</strong> <%= @user.name %>
+      </div>
+      <div class="">
+        <strong>Colegio:</strong> <%= @user.school %>
+      </div>
+      <div class="">
+        <strong>Email:</strong> <%= @user.email %>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-6">
+      <h3>Estadísticas</h3>
+      <div class="">
+        <strong>Puntos:</strong> <%= @user.points %>
+      </div>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>
+            Problemas aceptados <span class="badge"><%= @user.accepted_problems.count %></span>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.accepted_problems.each do |p| %>
+          <tr>
+            <td>
+              <%= link_to p.name, p %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Problemas intentados <span class="badge"><%= @user.submitted_problems.count %></span> </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.submitted_problems.each do |p| %>
+          <tr>
+            <td>
+              <%= link_to p.name, p %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

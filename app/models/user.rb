@@ -29,10 +29,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :submissions
-  has_many :submitted_problems, through: :submissions, source: :problem
+
+  has_many :submitted_problems, -> { uniq }, through: :submissions, source: :problem
+  has_many :accepted_problems, -> { where(submissions: {result:"ACCEPTED"}).uniq }, through: :submissions, source: :problem
 
   #Admins
-  has_many :set_problems, :foreign_key => 'problem_setter_id', :class_name => 'Problem'
+  has_many :set_problems, foreign_key: 'problem_setter_id', class_name: 'Problem'
 
   validates :name, :username, :school, presence: true
 
