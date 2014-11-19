@@ -1,1 +1,22 @@
-<h1>Hola</h1>
+<div class="container">
+  <div class="page-header">
+    <h1><%= @problem.name %></h1>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <h4>subido por <%= link_to @problem.problem_setter.username ,@problem.problem_setter %>
+        </h4>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to "Enviar Solución", new_problem_submission_path(@problem), class: "btn btn-success pull-right" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p>
+        <%= @problem.description %>
+      </p>
+    </div>
+  </div>
+</div>
