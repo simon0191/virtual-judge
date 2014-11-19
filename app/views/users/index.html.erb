@@ -1,4 +1,36 @@
-<% @users.each do |u|%>
-<p><%= u.to_json %></p>
-<br>
-<% end %>
+<div class="container">
+  <div class="page-header"><h1>Ranking</h1></div>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Usuario</th>
+            <th>Puntos</th>
+            <th>Problemas resueltos</th>
+            <th>Problemas intentados</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |u|%>
+            <tr>
+              <td>
+                <%= link_to u.username, u %>
+              </td>
+              <td>
+                <%= u.points %>
+              </td>
+              <td>
+                <%= u.accepted_problems.count %>
+              </td>
+              <td>
+                <%= u.submitted_problems.count %>
+              </td>
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
